@@ -1,70 +1,61 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popup View</title>
+    <title>Popup</title>
     <style>
-        .popup-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            justify-content: center;
-            align-items: center;
-            display: none;
-        }
-
         .popup {
-            box-sizing: border-box;
-            width: 480px;
-            height: 260px;
-            background: #fff;
-            padding: 10px 10px 10px 10px;
-            border-radius: 4px;
-        }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: none;
-            z-index: 999;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
         }
 
-        .popup-container.active {
-            display: flex;
+        .popup-content {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
-        .overlay.active {
-            display: block;
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
-    <button id="openPopup">Open Popup</button>
-    <div class="overlay" id="overlay"></div>
-    <div class="popup-container" id="popup-container">
-        <div class="popup">
-            <button id="closePopup">Close Popup</button>
+    <button id="popupButton">Open Popup</button>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>This is a Popup</h2>
+            <p>Hello, this is a popup example.</p>
         </div>
     </div>
+
     <script>
-        document.getElementById("openPopup").addEventListener("click", function () {
-            document.getElementById("popup-container").classList.add("active");
-            document.getElementById("overlay").classList.add("active");
+        const popup = document.getElementById('popup');
+        const popupButton = document.getElementById('popupButton');
+
+        popupButton.addEventListener('click', () => {
+            popup.style.display = 'block';
         });
 
-        document.getElementById("closePopup").addEventListener("click", function () {
-            document.getElementById("popup-container").classList.remove("active");
-            document.getElementById("overlay").classList.remove("active");
-        });
+        function closePopup() {
+            popup.style.display = 'none';
+        }
     </script>
 </body>
 </html>
