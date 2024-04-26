@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup View</title>
+    <style>
+        .popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .popup {
+            box-sizing: border-box;
+            width: 480px;
+            height: 260px;
+            background: #fff;
+            padding: 10px 10px 10px 10px;
+            border-radius: 4px;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 999;
+        }
+
+        .popup-container.active {
+            display: flex;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button id="openPopup">Open Popup</button>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup-container" id="popup-container">
+        <div class="popup">
+            <button id="closePopup">Close Popup</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("openPopup").addEventListener("click", function () {
+            document.getElementById("popup-container").classList.add("active");
+            document.getElementById("overlay").classList.add("active");
+        });
+
+        document.getElementById("closePopup").addEventListener("click", function () {
+            document.getElementById("popup-container").classList.remove("active");
+            document.getElementById("overlay").classList.remove("active");
+        });
+    </script>
+</body>
+</html>
