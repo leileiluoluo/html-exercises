@@ -6,26 +6,32 @@
     <title>Text Carousel</title>
     <style>
       :root {
+        /* 轮播的条数 */
         --s: 6;
+        /* 单个条目的高度 */
         --h: 36;
+        /* 单次动画的时长 */
         --speed: 3s;
       }
 
-      .g-container {
-        background-color: blueviolet;
-        width: 300px;
+      .container {
+        width: 200px;
         height: calc(var(--h) * 1px);
-        line-height: (var(--h) * 1px);
+        line-height: calc(var(--h) * 1px);
+        border-radius: 4px;
+        border: 1px solid darkgray;
+        overflow: hidden;
       }
 
       ul {
-        display: flex;
-        flex-direction: column;
+        margin-top: auto;
+        margin-bottom: auto;
         animation: move calc(var(--speed) * var(--s)) steps(var(--s)) infinite;
       }
 
       ul li {
-        width: 100%;
+        white-space: nowrap;
+        list-style: none;
         animation: liMove calc(var(--speed)) infinite;
       }
 
@@ -53,16 +59,15 @@
   </head>
 
   <body>
-    <div class="g-container">
-      <ul style="--s: 6">
-        <li>Lorem ipsum 1111111</li>
-        <li>Lorem ipsum 2222222</li>
-        <li>Lorem ipsum 3333333</li>
-        <li>Lorem ipsum 4444444</li>
-        <li>Lorem ipsum 5555555</li>
-        <li>Lorem ipsum 6666666</li>
-        <!--末尾补一个首条数据-->
-        <li>Lorem ipsum 1111111</li>
+    <div class="container">
+      <ul style="--s: 4">
+        <li>Text Carousel 1</li>
+        <li>Text Carousel 2</li>
+        <li>Text Carousel 3</li>
+        <li>Text Carousel 4</li>
+
+        <!-- 将第一条数据补到末尾 -->
+        <li>Text Carousel 1</li>
       </ul>
     </div>
   </body>
